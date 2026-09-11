@@ -1,0 +1,63 @@
+<script>
+
+
+//task 1
+const createBankAccount=()=>{
+    let balance=5000
+    return ()=> {
+         console.log("Account Balance:", balance)
+         }
+    
+}
+let outsideBalance=50000
+console.log("outside:",outsideBalance);
+   
+let balances=createBankAccount()
+balances()
+
+//task 2
+const createAccount = () => {
+     let balance = 1000;
+      return (amount) => {
+         balance = balance + amount
+          console.log("Deposit Amount:", amount)
+           console.log("Current Balance:", balance)
+         }
+         }
+  
+
+let amounts=createAccount()
+amounts(500)
+//task 3
+const createCounter=()=>{
+    let count=0
+    const increament=()=>{
+        count++
+      
+        
+    }
+     const decreament=()=>{
+        count--
+      
+        
+    }
+    const getCounter=()=>{
+        console.log(count);
+        
+    }
+    return {increament,decreament,getCounter}
+   
+}
+let count=1000
+console.log(count+count);
+
+let counter=createCounter()
+counter.increament()
+counter.increament()
+counter.decreament()
+counter.getCounter()
+
+
+
+
+</script>

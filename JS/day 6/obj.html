@@ -1,6 +1,72 @@
 <script>
 
-cost
+let salaries = [15000, 20000, 25000, 30000, 35000];
+
+let resSalarie = salaries.map((e)=>{
+    return e+2000
+})
+console.log("orignal",salaries);
+
+console.log( "increas",resSalarie);
+
+
+// task 2
+
+let marks = [35, 78, 42, 90, 25, 67, 55];
+
+let eligibleMark = marks.filter((e)=>{
+return e>=50
+})
+
+console.log(eligibleMark);
+
+// task 3  
+
+let products = [
+
+    { id: 101, name: "Laptop", price: 55000 },
+
+    { id: 102, name: "Mouse", price: 800 },
+
+    { id: 103, name: "Keyboard", price: 1500 },
+
+    { id: 104, name: "Monitor", price: 12000 }
+
+];
+
+let findd = products.find((e)=>{
+    return e.id===103
+})
+
+console.log(findd);
+
+
+
+
+// task 4
+let cart = [
+
+    { name: "Shirt", price: 1200 },
+
+    { name: "Shoes", price: 2500 },
+
+    { name: "Watch", price: 3000 },
+
+    { name: "Bag", price: 1500 }
+
+];
+
+
+
+let ressCart = cart.reduce((accum,cur)=>{
+return accum + cur.price
+},0)
+
+console.log(ressCart);
+
+
+
+
 
 
 

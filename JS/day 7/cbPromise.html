@@ -1,0 +1,45 @@
+<script>
+
+    //Task 1
+    const calculate = (a, b, callback) => {
+
+    // Add two numbers
+    let result = a + b
+
+    // Send result to callback
+    callback(result)
+}
+
+calculate(10, 20, (result) => {
+
+    // Print result
+    console.log("Result =", result)
+
+})
+
+//Task 2
+
+const checkNumber = (number) => {
+
+    return new Promise((resolve, reject) => {
+
+        if (number > 10) {
+            resolve("Valid Number");
+        } else {
+            reject("Invalid Number");
+        }
+
+    })
+
+}
+
+checkNumber(12)
+
+    .then((result) => {
+        console.log("Success:", result)
+    })
+
+    .catch((error) => {
+        console.log("Error:", error)
+    })
+</script>

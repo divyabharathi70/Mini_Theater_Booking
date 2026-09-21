@@ -1,0 +1,73 @@
+<script>
+
+    //task 1
+const electricityBill=(name,unit)=>{
+    if(unit <=100&&unit>=0){
+        console.log(name,+"","Amount  ",unit*2);
+        
+    }
+    else if(unit >=101&&unit<=200){
+       console.log(name,"Amount  ",unit*3);
+       
+    }
+     else if(unit>=201){
+       console.log(name,"Amount:  ",unit*5);
+       
+    }
+}
+electricityBill("gokul",280)
+//task 2
+const ATM=(amount,withraw)=>{
+    if(withraw>0 && withraw%500===0 && amount>=withraw){
+       let accountt=amount-withraw
+       console.log("Balance: ",accountt);
+       console.log("Withraw successfully: ",withraw);
+       
+    }else{
+        console.log("Insufficent Balance");
+        
+    }
+
+}
+ATM(15000,200)
+//task 3
+const login=(pin)=>{
+    let attempt=0
+    let correctPin=1234
+    for(let i=1 ;i<=3;i++){
+        attempt++
+        if(correctPin===pin){
+            console.log("Login Successful");
+            break;
+        }else{
+          
+            console.log("incorrect");
+            
+        }
+        pin=0
+    }
+    if(attempt===3&&pin!=correctPin){
+        console.log("Account Blocked");
+        
+    }
+}
+login(1234)
+//task 4
+const billSystem=(quantity)=>{
+    for(let j=1;j<=quantity;j++){
+        console.log("Quantity"+j+"  ",j*250);
+        
+    }
+}
+billSystem(7)
+//task 5
+const theatre=(row,seat)=>{
+    for(let a=1;a<=row;a++){
+        for(let b=1;b<=seat;b++){
+            console.log("row",a+"-"+"seat",b);
+            
+        }
+    }
+}
+theatre(5,4)
+</script>

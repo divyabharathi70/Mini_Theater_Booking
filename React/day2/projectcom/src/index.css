@@ -1,0 +1,18 @@
+@import 'tailwindcss';
+
+
+
+
+
+.par{
+  background:rgb(5, 5, 5);
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  color: rgb(160, 155, 155);
+  align-items: center;
+  height: 90px;
+  
+}
+
+

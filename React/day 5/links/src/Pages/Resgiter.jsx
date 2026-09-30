@@ -1,0 +1,9 @@
+import React from 'react'
+
+const Resgiter = () => {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-100"> <div className="bg-white w-96 p-8 rounded-xl shadow-lg"> <h1 className="text-3xl font-bold text-center mb-6"> Resgiter </h1> <input type="email" placeholder="Email" className="w-full p-3 mb-4 border rounded-lg" /> <input type="password" placeholder="Password" className="w-full p-3 mb-5 border rounded-lg" /> <button className="w-full bg-blue-600 text-white p-3 rounded-lg"> Login </button> </div> </div>
+  )
+}
+
+export default Resgiter

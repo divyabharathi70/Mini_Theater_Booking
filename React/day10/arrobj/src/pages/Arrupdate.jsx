@@ -40,7 +40,7 @@ const copy=[...arr,data]
      <h1 className='bg-gray-600 text-center p-2 rounded-2xl'   key={i+1}>{e}</h1>
   ))}
    
-   <button className='bg-black text-center text-white p-3 rounded-2xl' onClick={()=>update("paramesh")}  >UPDATE</button>
+   <button className='bg-black text-center text-white p-3 rounded-2xl' onClick={()=>update("welcome")}  >UPDATE</button>
 
 </div>
 

@@ -25,15 +25,11 @@ const handleSubmit = (e) => {
   e.preventDefault();
 
   setShow((p) => [...p, data]);
+console.log(data);
 
   alert("Successfully done!");
 
-  setData({
-    username: "",
-    userage: "",
-    useremail: "",
-    userpassword: ""
-  });
+  setData({username: "",userage: "",useremail: "",userpassword: "" });
 };
 
 
@@ -42,10 +38,10 @@ const handleSubmit = (e) => {
     <div className='bg-white p-10 gap-10 flex justify-center items-center'> 
    
    <form  onSubmit={handleSubmit} className='bg-gray-300 p-6 flex flex-col gap-5 w-100 justify-center items-center text-center' >
-    <input  onChange={handleChange} value={setData.username} name='username' type="text" placeholder='Enter the name'  className=' bg-white border-black p-2 rounded-2xl' />
-    <input onChange={handleChange} value={setData.userage} name='userage' type="age"  placeholder='Enter the age' className=' bg-white border-black p-2 rounded-2xl'/>
-    <input onChange={handleChange} value={setData.useremail} name='useremail' type="email" placeholder='Enter the email' className=' bg-white border-black p-2 rounded-2xl'  />
-    <input  onChange={handleChange} value={setData.userpassword} name='userpassword' type="password" placeholder='Enter the password' className=' bg-white border-black p-2 rounded-2xl' />
+    <input  onChange={handleChange} value={data.username} name='username' type="text" placeholder='Enter the name'  className=' bg-white border-black p-2 rounded-2xl' />
+    <input onChange={handleChange} value={data.userage} name='userage' type="number"  placeholder='Enter the age' className=' bg-white border-black p-2 rounded-2xl'/>
+    <input onChange={handleChange} value={data.useremail} name='useremail' type="email" placeholder='Enter the email' className=' bg-white border-black p-2 rounded-2xl'  />
+    <input  onChange={handleChange} value={data.userpassword} name='userpassword' type="password" placeholder='Enter the password' className=' bg-white border-black p-2 rounded-2xl' />
   
     <input type="submit" value="Register"  className='bg-amber-300 text-center p-3 rounded-2xl'/>
 

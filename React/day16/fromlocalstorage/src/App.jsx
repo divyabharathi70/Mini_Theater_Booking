@@ -1,60 +1,60 @@
-
-import { useState } from "react";
+import React, { useState } from 'react'
+import Register from './Register'
 
 const App = () => {
-  const [saveData, setSaveData] = useState({ name: "",email: "", age: "" });
+ const [obj,setObj] = useState({name:"",email:"",age:""})
+ const [show,setShow] = useState([])
 
-  const [ShowData, setShowData] = useState([]);
+const handleChange = (e) => {
+  const {name,value} = e.target 
+  const newObj = {...obj,[name]:value}
+  setObj(newObj)                            
+}
 
-  const valueTake = (event) => {
-    const { name, value } = event.target;
+const handleSubmit = (e) => {
+  e.preventDefault()
+const takeobj = {...obj}
+const addobj =[...show,takeobj]
 
-    setSaveData({ ...saveData,[name]: value5888 });
-  };
+setShow(addobj)
+localStorage.setItem("data",JSON.stringify(addobj))
 
-  const addData = (e) => {
-    e.preventDefault();
+setObj({name:"",email:"",age:""})
+}
 
-    if (
-      !saveData.name.trim() ||
-      !saveData.email.trim() ||
-      !saveData.age.trim()
-    ) {
-      alert("Please Fill the Datas");
-      return;
-    }
 
-    const takeObj = { ...saveData };
-
-    const addArr = [...ShowData, takeObj];
-
-    setShowData(addArr);
-
-    localStorage.setItem("mydatas", JSON.stringify(addArr));
-
-    alert("Successfully Added");
-
-    setSaveData({
-      name: "",
-      email: "",
-      age: ""
-    });
-  };
 
   return (
     <>
-      <form onSubmit={addData}>
-        <input type="text" name="name" value={saveData.name} placeholder="Enter the Name" onChange={valueTake} />
+    <form onSubmit={handleSubmit}>
 
-        <input type="email" name="email"value={saveData.email} placeholder="Enter the Email" onChange={valueTake}   />
 
-        <input type="number" name="age" value={saveData.age} placeholder="Enter the Age"onChange={valueTake} />
 
-        <button type="submit">Register</button>
-      </form>
+  <input type ="text" name="name" placeholder="Enter the Name"  onChange={handleChange} value={obj.name}/>
+    <input type ="email" name="email" placeholder="Enter the email" onChange={handleChange} value={obj.email} />
+  <input type ="age" name="age" placeholder="Enter the age" onChange={handleChange} value={obj.age} />
+
+
+  <input type ="submit" value="Register" /> 
+
+  
+  
+
+
+  </form>
+
+  <div>
+    {show.map((e,i) => (
+      <div key={i+1}>
+        <p>Name: {e.name}</p>
+        <p>Email: {e.email}</p>
+        <p>Age: {e.age}</p>
+      </div>
+    ))}
+  </div>
+    
     </>
-  );
-};
+  )
+}
 
-export default App;
-
+export default App

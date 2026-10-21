@@ -36,7 +36,7 @@ let product= [...datas]
  if(searchTerm){
   product = product.filter((e)=>e.title.toLowerCase().includes(searchTerm.toLowerCase())),[]
 }
-// filtering the category from the data
+// filtering the category from the data dupilcate valu remove
 const getCategory = datas.map((e)=>e.category)
  
 // console.log(getCategory)

@@ -138,13 +138,45 @@
 // export default App
 
 
-import React from 'react'
-import DemoSerch from './DemoSerch'
+// import React from 'react'
+// import DemoSerch from './DemoSerch'
+// import ShowColor from './ShowColor'
+
+// const App = () => {
+//   return (
+// <>
+// {/* <DemoSerch/> */}
+// {/* <ShowColor/> */}
+// </>  )
+// }
+
+// export default App
+
+
+
+import React, { useContext } from 'react'
+import CreateContex from './create/CreateContex'
 
 const App = () => {
+  const {count, handleClick,data,isActive,counter,handleStart,startref,stoptref,handleStop} =useContext(CreateContex)
+
   return (
 <>
-<DemoSerch/>
+<div className='bg-gray-500  flex-col flex items-center justify-center p-5 gap-5 '>
+<h1 className='p-5 bg-amber-300 rounded-2xl w-50 text-center'>{count}</h1>
+<button onClick={handleClick} className='bg-white text-black p-2 rounded-2xl w-50'>click</button>
+<p>{data.name}</p>
+<p>{data.age}</p>
+<h2>{isActive}</h2>
+
+{/* <h1>Timer:     {counter}</h1> */}
+<h1 ref={startref}></h1>
+<button onClick={handleStart}>Show</button>
+<button onClick={handleStop}>HIDE</button>
+
+
+</div>
+
 </>  )
 }
 

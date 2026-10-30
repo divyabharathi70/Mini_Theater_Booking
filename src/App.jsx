@@ -1,8 +1,11 @@
-import React from 'react'
+import Vendors from "./pages/Vendor"
+
 
 const App = () => {
   return (
-    <div>App</div>
+    <div>
+     <Vendors/>
+    </div>
   )
 }
 

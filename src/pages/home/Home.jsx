@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import room1Image from '../../asserts/images/Room1.jpeg'
 import room2Image from '../../asserts/images/Room2.jpeg'
 import room3Image from '../../asserts/images/Room3.jpeg'
@@ -74,10 +74,11 @@ const initialRooms = [
   },
 ]
 const Home = () => {
-const [rooms] = useState(() => {
-  const savedRooms = localStorage.getItem('rooms')
+    const navigate = useNavigate()
+    const [rooms] = useState(() => {
+    const savedRooms = localStorage.getItem('rooms')
 
-  if (savedRooms) {
+  if (savedRooms){
     return JSON.parse(savedRooms)
   }
     localStorage.setItem('rooms', JSON.stringify(initialRooms))
@@ -89,11 +90,9 @@ const [rooms] = useState(() => {
   return (
     <>
     <section>
-
-
        {/* navbar */}
+       
       <div className='bg-purple-500 flex justify-between items-center p-5 '>
-
         <div className='flex justify-center  items-center '>
            <img  src={Logo} alt="Mini Theater logo" className="h-12 w-auto  rounded-2xl justify-center" />
         </div>
@@ -140,12 +139,11 @@ const [rooms] = useState(() => {
               <p>{room.amenities.join(', ')}</p>
               <p>{room.available ? 'Available' : 'Not available'}</p>
               {room.available ? (
-                <Link
-                  to={`/bookroom?roomId=${room.id}`}
-                  className='bg-black rounded-2xl text-white p-2 text-center'
-                >
-                  Book Room
-                </Link>
+                <button
+                    onClick={() => navigate('/booking', { state: room })}
+                    className='bg-black rounded-2xl text-white p-2 text-center'>
+                    Book Room
+              </button>
               ) : (
                 <button
                   className='bg-black rounded-2xl text-white p-2 disabled:bg-gray-500'

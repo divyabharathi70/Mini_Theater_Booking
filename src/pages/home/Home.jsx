@@ -124,9 +124,21 @@ const Home = () => {
     </>
   ) : (
     <Link to="/profile" className="flex flex-col items-center">
-      <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center text-xl font-bold">
-        {currentUser.name.charAt(0).toUpperCase()}
-      </div>
+      {currentUser.profileImage ? (
+
+  <img
+    src={currentUser.profileImage}
+    alt="Profile"
+    className="w-10 h-10 rounded-full object-cover"
+  />
+
+) : (
+
+  <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center text-xl font-bold">
+    {currentUser.name.charAt(0).toUpperCase()}
+  </div>
+
+)}
 
       <span className="text-sm font-semibold text-black">
         {currentUser.name}

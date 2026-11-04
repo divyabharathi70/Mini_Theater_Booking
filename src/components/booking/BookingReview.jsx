@@ -61,7 +61,6 @@ const BookingReview = () => {
 
 
   const handlePayment = () => {
-
     if (!currentUser) {
       alert('Please login before making a payment.')
       navigate('/login')
@@ -95,10 +94,10 @@ const BookingReview = () => {
 
   }
 
-  if (paymentDone) {
+  if(paymentDone) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-gray-100 p-6">
-        <div className="w-full max-w-lg rounded-2xl bg-white p-10 text-center shadow-xl">
+        <div className="w-full max-w-lg rounded-2xl bg-white p-10 text-center shadow-xl"> 
           <h1 className="text-3xl font-bold text-green-600">
             Payment Successful!
           </h1>

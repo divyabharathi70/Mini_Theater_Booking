@@ -7,6 +7,7 @@ import Register from "../pages/auth/Register"
 import Home from "../pages/home/Home"
 import DateTime from "../components/booking/DateTime"
 import BookingReview from "../components/booking/BookingReview"
+import MyBookings from "../components/booking/MyBooking"
 
 const AppRoutes = () => {
   return (
@@ -18,6 +19,7 @@ const AppRoutes = () => {
         <Route path="/booking/Customization" element={<Customization />} />
         <Route path="/booking/surprises" element={<SurpriseSelection />} />
         <Route path="/booking/review" element={<BookingReview />} />
+        <Route path="/mybookings" element={<MyBookings/>}/>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Register />} />
       </Routes>

@@ -75,6 +75,15 @@ const initialRooms = [
 ]
 const Home = () => {
     const navigate = useNavigate()
+    const handleBookRoom = (room) => {
+      if (!localStorage.getItem('currentUser')) {
+        navigate('/signup')
+        return
+      }
+
+      navigate('/booking', { state: room })
+    }
+
     const [rooms] = useState(() => {
     const savedRooms = localStorage.getItem('rooms')
 
@@ -96,12 +105,13 @@ const Home = () => {
         <div className='flex justify-center  items-center '>
            <img  src={Logo} alt="Mini Theater logo" className="h-12 w-auto  rounded-2xl justify-center" />
         </div>
-          <div className='flex justify-between items-centern gap-6'>
+          <div className='flex justify-between items-center gap-6'>
             <Link to={"/"}className='hover:text-white'>Home</Link>
             <Link to={"/bookroom"}className='hover:text-white'>Book A Room</Link>
             <Link to={"/rooms"}className='hover:text-white'>Rooms</Link>
             <Link to={"/service"}className='hover:text-white'>Services</Link>
             <Link to={"/works"}className='hover:text-white'>How It Works</Link>
+            <Link to={"/mybookings"} className='hover:text-white'>My Bookings</Link>
             <Link to={"/about"}className='hover:text-white'>About</Link>
             <Link to={"/contact"} className='hover:text-white'>Contact</Link>
             <Link to={"/login"} className=' bg-black text-white justify-between items-center p-2 hover:text-purple-400 rounded-2xl'>Login</Link>
@@ -140,7 +150,7 @@ const Home = () => {
               <p>{room.available ? 'Available' : 'Not available'}</p>
               {room.available ? (
                 <button
-                    onClick={() => navigate('/booking', { state: room })}
+                    onClick={() => handleBookRoom(room)}
                     className='bg-black rounded-2xl text-white p-2 text-center'>
                     Book Room
               </button>

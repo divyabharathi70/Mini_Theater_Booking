@@ -435,21 +435,7 @@ const Feedback = () => {
                 </div>
 
 
-                {/* STARS */}
-
-                <div className="text-yellow-400 mt-6 text-xl">
-
-
-                  {"★".repeat(item.rating)}
-
-                  <span className="text-gray-600">
-
-                    {"★".repeat(5 - item.rating)}
-
-                  </span>
-
-
-                </div>
+              
 
 
                 {/* MESSAGE */}
@@ -461,19 +447,7 @@ const Feedback = () => {
                 </p>
 
 
-                {/* FOOTER */}
-
-                <div className="border-t border-white/10 mt-6 pt-5">
-
-
-                  <p className="text-purple-400 text-sm">
-
-                    🎬 Mini Theater Experience
-
-                  </p>
-
-
-                </div>
+          
 
 
               </div>

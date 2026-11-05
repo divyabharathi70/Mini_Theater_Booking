@@ -7,6 +7,8 @@ import Register from "../pages/auth/Register"
 import Home from "../pages/home/Home"
 import DateTime from "../components/booking/DateTime"
 import BookingReview from "../components/booking/BookingReview"
+import Feedback from "../components/feedback/FeedBack"
+import About from "../components/about/About"
 
 const AppRoutes = () => {
   return (
@@ -20,6 +22,11 @@ const AppRoutes = () => {
         <Route path="/booking/review" element={<BookingReview />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Register />} />
+        <Route path="/feedback" element={<Feedback />} />
+        <Route path="/about" element={<About />} />
+
+
+
       </Routes>
     </div>
   )

@@ -78,9 +78,14 @@ const initialRooms = [
 ]
 
 const Home = () => {
-  const navigate = useNavigate()
+    const navigate = useNavigate()
 
-  const [rooms] = useState(() => {
+    // Current Logged-in User
+    const [currentUser, setCurrentUser] = useState(() => {
+      return JSON.parse(localStorage.getItem("currentUser")) || null;
+    });
+    
+    const [rooms] = useState(() => {
     const savedRooms = localStorage.getItem('rooms')
 
     if (savedRooms) {
@@ -103,17 +108,61 @@ const Home = () => {
 
   return (
     <>
-      {/* Navbar */}
-      <section>
-        <div className="bg-purple-700 flex flex-wrap justify-between items-center gap-4 px-8 py-4 shadow-md">
+    <section>
+       {/* navbar */}
+       
+      <div className='bg-purple-500 flex justify-between items-center p-5 '>
+        <div className='flex justify-center  items-center '>
+           <img  src={Logo} alt="Mini Theater logo" className="h-12 w-auto  rounded-2xl justify-center" />
+        </div>
+          <div className='flex justify-between items-centern gap-6'>
+            <Link to={"/"}className='hover:text-white'>Home</Link>
+            <Link to={"/bookroom"}className='hover:text-white'>Book A Room</Link>
+            <Link to={"/rooms"}className='hover:text-white'>Rooms</Link>
+            <Link to={"/service"}className='hover:text-white'>Services</Link>
+            <Link to={"/works"}className='hover:text-white'>How It Works</Link>
+            <Link to={"/about"}className='hover:text-white'>About</Link>
+            <Link to={"/contact"} className='hover:text-white'>Contact</Link>
+            {/* Login / Signup / Profile */}
 
-          <div className="flex justify-center items-center">
-            <img
-              src={Logo}
-              alt="Mini Theater logo"
-              className="h-12 w-auto rounded-lg"
-            />
+  {!currentUser ? (
+    <>
+      <Link to="/login" className="bg-black text-white p-2 rounded-2xl">
+        Login
+      </Link>
+
+      <Link to="/signup" className="bg-black text-white p-2 rounded-2xl">
+        SignUp
+      </Link>
+    </>
+  ) : (
+    <Link to="/profile" className="flex flex-col items-center">
+      {currentUser.profileImage ? (
+
+  <img
+    src={currentUser.profileImage}
+    alt="Profile"
+    className="w-10 h-10 rounded-full object-cover"
+  />
+
+) : (
+
+  <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center text-xl font-bold">
+    {currentUser.name.charAt(0).toUpperCase()}
+  </div>
+
+)}
+
+      <span className="text-sm font-semibold text-black">
+        {currentUser.name}
+      </span>
+    </Link>
+  )}
+
+       </div>
           </div>
+          
+     </section>
 
           <div className="flex flex-wrap items-center gap-6 text-sm font-medium">
 

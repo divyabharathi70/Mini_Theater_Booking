@@ -9,6 +9,7 @@ import DateTime from "../components/booking/DateTime"
 import BookingReview from "../components/booking/BookingReview"
 import Profile from "../pages/auth/profile"
 import MyBookings from "../components/booking/MyBooking"
+import Admin from "../pages/admin/Admin"
 
 const AppRoutes = () => {
   return (
@@ -25,7 +26,7 @@ const AppRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </div>
   )

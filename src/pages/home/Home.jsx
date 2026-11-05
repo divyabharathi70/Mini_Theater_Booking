@@ -7,10 +7,10 @@ import {roomImages} from '../../datas/TheaterDatas.js'
 
 const Home = () => {
   const navigate = useNavigate() 
-  // Current Logged-in User
-  const currentUser = JSON.parse(localStorage.getItem("currentUser")) || null
+  const [currentUser, setCurrentUser] = useState(() => {
+    return JSON.parse(localStorage.getItem("currentUser")) || null
+  })
 
-  // Room Details
   const [rooms] = useState(() => {
     const savedRooms = localStorage.getItem('rooms')
 
@@ -23,26 +23,22 @@ const Home = () => {
     return initialRooms
   })
 
-  // Book Room Function
   const handleBookRoom = (room) => {
 
     if (!currentUser) {
       navigate('/signup')
       return
     }
-
     navigate('/booking', { state: { room } })
   }
 
   return (
     <>
 
-      {/* Navbar */}
       <section>
 
         <div className='bg-purple-500 flex justify-between items-center px-8 py-4'>
 
-          {/* Logo */}
           <div className='flex justify-center items-center'>
 
             <img
@@ -53,9 +49,7 @@ const Home = () => {
 
           </div>
 
-          {/* Navigation Links */}
           <div className='flex items-center gap-6'>
-
             <Link to={"/"} className='hover:text-white'>
               Home
             </Link>
@@ -88,9 +82,7 @@ const Home = () => {
               Contact
             </Link>
 
-
             {!currentUser ? (
-
               <>
                 <Link
                   to="/login"

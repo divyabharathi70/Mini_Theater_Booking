@@ -88,7 +88,6 @@ const ThemeSelection = () => {
 
       </div>
 
-      {/* Theme Cards */}
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 
         {themes.map((theme) => (
@@ -101,12 +100,10 @@ const ThemeSelection = () => {
             }`}
           >
 
-            {/* Theme Emoji */}
             <div className="mb-4 text-center text-6xl">
               {theme.emoji}
             </div>
 
-            {/* Theme Details */}
             <h2 className="text-center text-xl font-bold">
               {theme.name}
             </h2>
@@ -138,7 +135,6 @@ const ThemeSelection = () => {
 
       </div>
 
-      {/* Price Summary */}
       <div className="mx-auto mt-8 max-w-5xl rounded-2xl bg-white p-6 shadow-lg">
 
         <h2 className="mb-4 text-xl font-bold">

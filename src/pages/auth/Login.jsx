@@ -34,6 +34,7 @@ function Login() {
       navigate("/");
     } else {
       alert("Invalid Email or Password");
+      navigate("/signup")
     }
   }
 

@@ -25,7 +25,7 @@ const Home = () => {
 
   const handleBookRoom = (room) => {
 
-    if (!localStorage.getItem('currentUser')) {
+    if (!currentUser) {
       navigate('/signup')
       return
     }

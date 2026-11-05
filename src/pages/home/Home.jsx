@@ -8,9 +8,7 @@ import {roomImages} from '../../datas/TheaterDatas.js'
 const Home = () => {
   const navigate = useNavigate() 
   // Current Logged-in User
-  const [currentUser, setCurrentUser] = useState(() => {
-    return JSON.parse(localStorage.getItem("currentUser")) || null
-  })
+  const currentUser = JSON.parse(localStorage.getItem("currentUser")) || null
 
   // Room Details
   const [rooms] = useState(() => {
@@ -28,7 +26,7 @@ const Home = () => {
   // Book Room Function
   const handleBookRoom = (room) => {
 
-    if (!localStorage.getItem('currentUser')) {
+    if (!currentUser) {
       navigate('/signup')
       return
     }

@@ -5,7 +5,7 @@ const DateTime = () => {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const room = location.state
+  const room = location.state?.room ?? location.state
 
   const [date, setDate] = useState('')
   const [startTime, setStartTime] = useState('')
@@ -48,7 +48,7 @@ const DateTime = () => {
       return
     }
 
-    navigate('/booking/theme  ', {
+    navigate('/booking/theme', {
       state: {
         room: room,
         date: date,

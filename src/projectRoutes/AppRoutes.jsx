@@ -15,6 +15,7 @@ const AppRoutes = () => {
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
+        {/* <Route path="/datetime" element={<DateTime />} /> */}
         <Route path="/booking" element={<DateTime />} />
         <Route path="/booking/theme" element={<ThemeSelection />} />
         <Route path="/booking/Customization" element={<Customization />} />

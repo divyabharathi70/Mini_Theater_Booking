@@ -33,13 +33,10 @@ function Profile() {
       }
 
       const reader = new FileReader();
-
       reader.onload = () => {
         setProfileImage(reader.result);
       };
-
       reader.readAsDataURL(file);
-
     }
   }
 

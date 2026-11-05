@@ -1,91 +1,19 @@
-
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-
-import room1Image from '../../asserts/images/Room1.jpeg'
-import room2Image from '../../asserts/images/Room2.jpeg'
-import room3Image from '../../asserts/images/Room3.jpeg'
-import room4Image from '../../asserts/images/Room4.jpeg'
-import room5Image from '../../asserts/images/Room5.jpeg'
-import room6Image from '../../asserts/images/Room 6.jpeg'
 import Logo from '../../asserts/images/Logo.jpeg'
 import CinemaBanner from '../../asserts/images/CinemaBanner.png'
-
-const roomImages = {
-  1: room1Image,
-  2: room2Image,
-  3: room3Image,
-  4: room4Image,
-  5: room5Image,
-  6: room6Image,
-}
-
-const initialRooms = [
-  {
-    id: 1,
-    name: 'Classic Theater',
-    image: room1Image,
-    capacity: 2,
-    price: 999,
-    amenities: ['4K Screen', 'Premium Seats', 'Sound System'],
-    available: true,
-  },
-  {
-    id: 2,
-    name: 'Couple Theater',
-    image: room2Image,
-    capacity: 2,
-    price: 1499,
-    amenities: ['Recliner Seats', '4K Screen', 'Romantic Lighting'],
-    available: true,
-  },
-  {
-    id: 3,
-    name: 'Friends Theater',
-    image: room3Image,
-    capacity: 6,
-    price: 2499,
-    amenities: ['Large Screen', 'Surround Sound', 'Snacks'],
-    available: true,
-  },
-  {
-    id: 4,
-    name: 'Birthday Theater',
-    image: room4Image,
-    capacity: 8,
-    price: 3499,
-    amenities: ['Decorations', 'Large Screen', 'Sound System'],
-    available: true,
-  },
-  {
-    id: 5,
-    name: 'Luxury Theater',
-    image: room5Image,
-    capacity: 4,
-    price: 2999,
-    amenities: ['Luxury Recliners', '4K Screen', 'Ambient Lighting'],
-    available: true,
-  },
-  {
-    id: 6,
-    name: 'Celebration Theater',
-    image: room6Image,
-    capacity: 10,
-    price: 4999,
-    amenities: ['Party Decorations', 'Large Screen', 'Premium Sound'],
-    available: true,
-  },
-]
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import {initialRooms} from '../../datas/TheaterDatas.js'
+import {roomImages} from '../../datas/TheaterDatas.js'
 
 const Home = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate() 
+  // Current Logged-in User
+  const [currentUser, setCurrentUser] = useState(() => {
+    return JSON.parse(localStorage.getItem("currentUser")) || null
+  })
 
-    // Current Logged-in User
-    const [currentUser, setCurrentUser] = useState(() => {
-      return JSON.parse(localStorage.getItem("currentUser")) || null;
-    });
-    
-    const [rooms] = useState(() => {
+  // Room Details
+  const [rooms] = useState(() => {
     const savedRooms = localStorage.getItem('rooms')
 
     if (savedRooms) {
@@ -97,7 +25,9 @@ const Home = () => {
     return initialRooms
   })
 
+  // Book Room Function
   const handleBookRoom = (room) => {
+
     if (!localStorage.getItem('currentUser')) {
       navigate('/signup')
       return
@@ -108,113 +38,111 @@ const Home = () => {
 
   return (
     <>
-    <section>
-       {/* navbar */}
-       
-      <div className='bg-purple-500 flex justify-between items-center p-5 '>
-        <div className='flex justify-center  items-center '>
-           <img  src={Logo} alt="Mini Theater logo" className="h-12 w-auto  rounded-2xl justify-center" />
-        </div>
-          <div className='flex justify-between items-centern gap-6'>
-            <Link to={"/"}className='hover:text-white'>Home</Link>
-            <Link to={"/bookroom"}className='hover:text-white'>Book A Room</Link>
-            <Link to={"/rooms"}className='hover:text-white'>Rooms</Link>
-            <Link to={"/service"}className='hover:text-white'>Services</Link>
-            <Link to={"/works"}className='hover:text-white'>How It Works</Link>
-            <Link to={"/about"}className='hover:text-white'>About</Link>
-            <Link to={"/contact"} className='hover:text-white'>Contact</Link>
-            {/* Login / Signup / Profile */}
 
-  {!currentUser ? (
-    <>
-      <Link to="/login" className="bg-black text-white p-2 rounded-2xl">
-        Login
-      </Link>
+      {/* Navbar */}
+      <section>
 
-      <Link to="/signup" className="bg-black text-white p-2 rounded-2xl">
-        SignUp
-      </Link>
-    </>
-  ) : (
-    <Link to="/profile" className="flex flex-col items-center">
-      {currentUser.profileImage ? (
+        <div className='bg-purple-500 flex justify-between items-center px-8 py-4'>
 
-  <img
-    src={currentUser.profileImage}
-    alt="Profile"
-    className="w-10 h-10 rounded-full object-cover"
-  />
+          {/* Logo */}
+          <div className='flex justify-center items-center'>
 
-) : (
+            <img
+              src={Logo}
+              alt="Mini Theater logo"
+              className="h-12 w-auto rounded-2xl"
+            />
 
-  <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center text-xl font-bold">
-    {currentUser.name.charAt(0).toUpperCase()}
-  </div>
-
-)}
-
-      <span className="text-sm font-semibold text-black">
-        {currentUser.name}
-      </span>
-    </Link>
-  )}
-
-       </div>
           </div>
-          
-     </section>
 
-          <div className="flex flex-wrap items-center gap-6 text-sm font-medium">
+          {/* Navigation Links */}
+          <div className='flex items-center gap-6'>
 
-            <Link to="/" className="text-purple-100 hover:text-white">
+            <Link to={"/"} className='hover:text-white'>
               Home
             </Link>
 
-            <Link to="/bookroom" className="text-purple-100 hover:text-white">
+            <Link to={"/bookroom"} className='hover:text-white'>
               Book A Room
             </Link>
 
-            <Link to="/rooms" className="text-purple-100 hover:text-white">
+            <Link to={"/rooms"} className='hover:text-white'>
               Rooms
             </Link>
 
-            <Link to="/service" className="text-purple-100 hover:text-white">
+            <Link to={"/service"} className='hover:text-white'>
               Services
             </Link>
 
-            <Link to="/works" className="text-purple-100 hover:text-white">
+            <Link to={"/works"} className='hover:text-white'>
               How It Works
             </Link>
 
-            <Link to="/mybookings" className="text-purple-100 hover:text-white">
+            <Link to={"/mybookings"} className='hover:text-white'>
               My Bookings
             </Link>
 
-            <Link to="/about" className="text-purple-100 hover:text-white">
+            <Link to={"/about"} className='hover:text-white'>
               About
             </Link>
 
-            <Link to="/contact" className="text-purple-100 hover:text-white">
+            <Link to={"/contact"} className='hover:text-white'>
               Contact
             </Link>
 
-            <Link
-              to="/login"
-              className="border border-white text-white px-4 py-2 rounded-lg hover:bg-white hover:text-purple-700"
-            >
-              Login
-            </Link>
 
-            <Link
-              to="/signup"
-              className="bg-white text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-100"
-            >
-              SignUp
-            </Link>
+            {!currentUser ? (
+
+              <>
+                <Link
+                  to="/login"
+                  className="bg-black text-white px-4 py-2 rounded-lg"
+                >
+                  Login
+                </Link>
+
+                <Link
+                  to="/signup"
+                  className="bg-black text-white px-4 py-2 rounded-lg"
+                >
+                  SignUp
+                </Link>
+              </>
+
+            ) : (
+
+              <Link to="/profile" className="flex flex-col items-center">
+
+                {currentUser.profileImage ? (
+
+                  <img
+                    src={currentUser.profileImage}
+                    alt="Profile"
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
+
+                ) : (
+
+                  <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center text-xl font-bold">
+                    {currentUser.name?.charAt(0).toUpperCase() || "U"}
+                  </div>
+
+                )}
+
+                <span className="text-sm font-semibold text-black">
+                  {currentUser.name}
+                </span>
+
+              </Link>
+
+            )}
 
           </div>
+
         </div>
+
       </section>
+
 
       {/* Full Width Banner */}
       <section className="w-full">
@@ -236,6 +164,7 @@ const Home = () => {
             </p>
 
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+
               YOUR PRIVATE
 
               <span className="block text-purple-700">
@@ -243,6 +172,7 @@ const Home = () => {
               </span>
 
               STARTS HERE!
+
             </h1>
 
             <p className="text-gray-700 text-base md:text-lg mt-5 max-w-md">
@@ -258,9 +188,11 @@ const Home = () => {
             </button>
 
           </div>
+
         </div>
 
       </section>
+
 
       {/* Room Cards */}
       <section>
@@ -329,6 +261,7 @@ const Home = () => {
                 )}
 
               </div>
+
             </div>
 
           ))}
@@ -337,8 +270,10 @@ const Home = () => {
 
       </section>
 
+
       {/* Footer */}
       <footer>
+
         <div className="bg-gray-900 text-gray-300 text-sm flex p-4 gap-3 justify-center items-center">
 
           <h1>
@@ -346,6 +281,7 @@ const Home = () => {
           </h1>
 
         </div>
+
       </footer>
 
     </>

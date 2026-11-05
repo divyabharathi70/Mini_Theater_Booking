@@ -1,68 +1,16 @@
 import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-
-const themes = [
-  {
-    id: 1,
-    name: 'Birthday Celebration',
-    price: 500,
-    description: 'Celebrate your special birthday with beautiful decorations.',
-    emoji: '🎂',
-  },
-  {
-    id: 2,
-    name: 'Proposal',
-    price: 800,
-    description: 'Create a romantic atmosphere for your special proposal.',
-    emoji: '💍',
-  },
-  {
-    id: 3,
-    name: 'Anniversary',
-    price: 700,
-    description: 'Celebrate your love with a romantic setup.',
-    emoji: '❤️',
-  },
-  {
-    id: 4,
-    name: 'Surprise Party',
-    price: 600,
-    description: 'Make your surprise celebration memorable.',
-    emoji: '🎉',
-  },
-  {
-    id: 5,
-    name: 'Graduation',
-    price: 400,
-    description: 'Celebrate your academic achievement in style.',
-    emoji: '🎓',
-  },
-  {
-    id: 6,
-    name: 'Movie Date',
-    price: 300,
-    description: 'Enjoy a special movie date with your loved one.',
-    emoji: '🍿',
-  },
-]
+import {themes} from '../../datas/Themes.js'
 
 const ThemeSelection = () => {
   const location = useLocation()
   const navigate = useNavigate()
 
-  // Receive booking details from DateTime page
   const booking = location.state
-
-  // Store the selected theme
   const [selectedTheme, setSelectedTheme] = useState(null)
-
-  // Original booking price from DateTime
   const basePrice = booking?.totalPrice || 0
-
-  // Add the selected theme price
   const totalPrice = basePrice + (selectedTheme?.price || 0)
 
-  // Go to Customization page
   const handleNext = () => {
     if (!selectedTheme) {
       alert('Please select a theme or skip this step')
@@ -78,7 +26,6 @@ const ThemeSelection = () => {
     })
   }
 
-  // Skip theme selection
   const handleSkip = () => {
     navigate('/booking/Customization', {
       state: {
@@ -89,7 +36,6 @@ const ThemeSelection = () => {
     })
   }
 
-  // Check whether booking details exist
   if (!booking?.room) {
     return (
       <div className="p-10 text-center">
@@ -110,7 +56,6 @@ const ThemeSelection = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-6 md:p-10">
 
-      {/* Heading */}
       <div className="mb-8 text-center">
         <h1 className="text-3xl font-bold text-purple-700">
           Choose Your Theme
@@ -121,7 +66,6 @@ const ThemeSelection = () => {
         </p>
       </div>
 
-      {/* Selected Room Details */}
       <div className="mx-auto mb-8 max-w-5xl rounded-xl bg-white p-5 shadow">
 
         <h2 className="text-xl font-bold">

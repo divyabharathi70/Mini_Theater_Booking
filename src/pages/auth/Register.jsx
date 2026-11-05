@@ -24,8 +24,7 @@ function Register() {
       id : Date.now(),
       name: name,
       email: email,
-      password: password,
-      profileImage: ""
+      password: password
     };
 
     users.push(newUser);

@@ -97,6 +97,15 @@ const Home = () => {
     return initialRooms
   })
 
+  const handleBookRoom = (room) => {
+    if (!localStorage.getItem('currentUser')) {
+      navigate('/signup')
+      return
+    }
+
+    navigate('/booking', { state: { room } })
+  }
+
   return (
     <>
     <section>
@@ -157,58 +166,48 @@ const Home = () => {
 
           <div className="flex flex-wrap items-center gap-6 text-sm font-medium">
 
-            <Link
-              to="/"
-              className="text-purple-100 hover:text-white transition-colors"
-            >
+            <Link to="/" className="text-purple-100 hover:text-white">
               Home
             </Link>
 
-            <Link
-              to="/rooms"
-              className="text-purple-100 hover:text-white transition-colors"
-            >
+            <Link to="/bookroom" className="text-purple-100 hover:text-white">
+              Book A Room
+            </Link>
+
+            <Link to="/rooms" className="text-purple-100 hover:text-white">
               Rooms
             </Link>
 
-            <Link
-              to="/service"
-              className="text-purple-100 hover:text-white transition-colors"
-            >
+            <Link to="/service" className="text-purple-100 hover:text-white">
               Services
             </Link>
 
-            <Link
-              to="/works"
-              className="text-purple-100 hover:text-white transition-colors"
-            >
+            <Link to="/works" className="text-purple-100 hover:text-white">
               How It Works
             </Link>
 
-            <Link
-              to="/about"
-              className="text-purple-100 hover:text-white transition-colors"
-            >
+            <Link to="/mybookings" className="text-purple-100 hover:text-white">
+              My Bookings
+            </Link>
+
+            <Link to="/about" className="text-purple-100 hover:text-white">
               About
             </Link>
 
-            <Link
-              to="/contact"
-              className="text-purple-100 hover:text-white transition-colors"
-            >
+            <Link to="/contact" className="text-purple-100 hover:text-white">
               Contact
             </Link>
 
             <Link
               to="/login"
-              className="border border-white text-white px-4 py-2 rounded-lg hover:bg-white hover:text-purple-700 transition-colors"
+              className="border border-white text-white px-4 py-2 rounded-lg hover:bg-white hover:text-purple-700"
             >
               Login
             </Link>
 
             <Link
               to="/signup"
-              className="bg-white text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-100 transition-colors"
+              className="bg-white text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-100"
             >
               SignUp
             </Link>
@@ -218,14 +217,18 @@ const Home = () => {
       </section>
 
       {/* Full Width Banner */}
-      <section className="w-full h-screen">
+      <section className="w-full">
 
-        <div className="relative w-full h-full md:h-[570px] overflow-hidden">
+        <div className="relative w-full h-screen overflow-hidden">
+
           <img
             src={CinemaBanner}
             alt="Mini Theater Cinema"
             className="absolute inset-0 w-full h-full object-cover"
           />
+
+          <div className="absolute inset-0 bg-black/10"></div>
+
           <div className="relative z-10 flex flex-col justify-center items-start h-full px-8 md:px-20 max-w-2xl">
 
             <p className="text-purple-700 font-semibold text-lg mb-3">
@@ -265,9 +268,10 @@ const Home = () => {
         <div className="bg-gray-100 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center p-10">
 
           {rooms.map((room) => (
+
             <div
               key={room.id}
-              className="bg-white flex flex-col shadow-md rounded-xl overflow-hidden"
+              className="bg-white flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-xl transition-shadow"
             >
 
               <img
@@ -307,8 +311,8 @@ const Home = () => {
                 {room.available ? (
 
                   <button
-                    onClick={() => navigate('/booking', { state: room })}
-                    className="mt-2 bg-purple-700 hover:bg-purple-800 transition-colors rounded-lg text-white py-2 text-center"
+                    onClick={() => handleBookRoom(room)}
+                    className="mt-2 bg-purple-700 hover:bg-purple-800 transition-colors rounded-lg text-white py-2"
                   >
                     Book Room
                   </button>
@@ -326,9 +330,11 @@ const Home = () => {
 
               </div>
             </div>
+
           ))}
 
         </div>
+
       </section>
 
       {/* Footer */}
@@ -341,6 +347,7 @@ const Home = () => {
 
         </div>
       </footer>
+
     </>
   )
 }

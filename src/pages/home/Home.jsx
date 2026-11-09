@@ -10,6 +10,7 @@ const Home = () => {
   const [currentUser, setCurrentUser] = useState(() => {
     return JSON.parse(localStorage.getItem("currentUser")) || null
   })
+  const [showMenu, setShowMenu] = useState(false);
 
   const [rooms] = useState(() => {
     const savedRooms = localStorage.getItem('rooms')
@@ -83,52 +84,77 @@ const Home = () => {
             </Link>
 
             {!currentUser ? (
-              <>
-                <Link
-                  to="/login"
-                  className="bg-black text-white px-4 py-2 rounded-lg"
-                >
-                  Login
-                </Link>
+  <>
+    <Link
+      to="/login"
+      className="bg-black text-white p-2 rounded-2xl"
+    >
+      Login
+    </Link>
 
-                <Link
-                  to="/signup"
-                  className="bg-black text-white px-4 py-2 rounded-lg"
-                >
-                  SignUp
-                </Link>
-              </>
+    <Link
+      to="/signup"
+      className="bg-black text-white p-2 rounded-2xl"
+    >
+      SignUp
+    </Link>
+  </>
+) : (
+  <div className="relative">
 
-            ) : (
+    {/* Profile Icon */}
+    <button
+      onClick={() => setShowMenu(!showMenu)}
+      className="flex flex-col items-center"
+    >
+      <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center overflow-hidden text-xl font-bold">
 
-              <Link to="/profile" className="flex flex-col items-center">
+        {currentUser.profileImage ? (
+          <img
+            src={currentUser.profileImage}
+            alt="Profile"
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          currentUser.name.charAt(0).toUpperCase()
+        )}
 
-                {currentUser.profileImage ? (
+      </div>
 
-                  <img
-                    src={currentUser.profileImage}
-                    alt="Profile"
-                    className="w-10 h-10 rounded-full object-cover"
-                  />
+      <span className="text-sm font-semibold text-black">
+        {currentUser.name}
+      </span>
+    </button>
 
-                ) : (
+    {/* Dropdown Menu */}
+    {showMenu && (
+      <div className="absolute right-0 top-16 w-36 bg-white shadow-lg rounded-lg border z-50">
 
-                  <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center text-xl font-bold">
-                    {currentUser.name?.charAt(0).toUpperCase() || "U"}
-                  </div>
+        <Link
+          to="/profile"
+          onClick={() => setShowMenu(false)}
+          className="block px-4 py-3 hover:bg-purple-100 text-black"
+        >
+          Profile
+        </Link>
 
-                )}
+        <button
+          onClick={() => {
+            localStorage.removeItem("currentUser");
+            setCurrentUser(null);
+            setShowMenu(false);
+            navigate("/");
+          }}
+          className="block w-full text-left px-4 py-3 hover:bg-purple-100 text-red-600"
+        >
+          Sign Out
+        </button>
 
-                <span className="text-sm font-semibold text-black">
-                  {currentUser.name}
-                </span>
+      </div>
+    )}
 
-              </Link>
-
-            )}
-
-          </div>
-
+  </div>
+)}
         </div>
 
       </section>

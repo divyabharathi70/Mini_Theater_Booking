@@ -101,21 +101,7 @@ const About = () => {
                 className="w-full h-[450px] object-cover"
               />
 
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/60 to-transparent p-8">
-
-                <p className="text-purple-400 text-sm tracking-widest">
-                  PREMIUM EXPERIENCE
-                </p>
-
-                <h2 className="text-3xl font-bold mt-2">
-                  Your Private Cinema
-                </h2>
-
-                <p className="text-gray-300 mt-2">
-                  Your movie. Your seat. Your experience.
-                </p>
-
-              </div>
+             
 
             </div>
 
@@ -185,9 +171,7 @@ const About = () => {
 
             </p>
 
-            <p className="text-purple-400 mt-6">
-              Discover More →
-            </p>
+         
 
           </div>
 
@@ -213,9 +197,6 @@ const About = () => {
 
             </p>
 
-            <p className="text-purple-400 mt-6">
-              Select Seat →
-            </p>
 
           </div>
 
@@ -241,9 +222,7 @@ const About = () => {
 
             </p>
 
-            <p className="text-purple-400 mt-6">
-              Start Watching →
-            </p>
+           
 
           </div>
 

@@ -1,13 +1,18 @@
-import React from 'react'
-import About from './About'
+
+import Aboutsimple from './Aboutsimple'
+import Feed from './Feed'
 import Feedback from './Feedback'
+import Navbar from './Navbar'
 
 const App = () => {
   return (
 <>
 
-<About/>
+{/* <About/> */}
+<Navbar/>
+<Aboutsimple/>
 <Feedback/>
+{/* <Feed/> */}
 </>  )
 }
 

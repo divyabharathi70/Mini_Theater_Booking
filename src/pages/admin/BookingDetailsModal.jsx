@@ -11,17 +11,17 @@ const BookingDetailsModal = ({ booking, onClose }) => {
   return (
 
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[#3D4F62]/60 p-4"
       onClick={onClose}
     >
 
       <div
-        className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white shadow-xl"
+        className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-[#F8FAFC] shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
 
         {/* Header */}
-        <div className="flex items-center justify-between rounded-t-2xl bg-purple-800 p-5 text-white">
+        <div className="flex items-center justify-between rounded-t-2xl bg-[#3D4F62] p-5 text-[#F8FAFC]">
 
           <div>
 
@@ -29,7 +29,7 @@ const BookingDetailsModal = ({ booking, onClose }) => {
               Booking Details
             </h2>
 
-            <p className="mt-1 text-sm text-purple-200">
+            <p className="mt-1 text-sm text-[#3D4F62]">
               Booking ID: BK{booking.bookingId}
             </p>
 
@@ -37,7 +37,7 @@ const BookingDetailsModal = ({ booking, onClose }) => {
 
           <button
             onClick={onClose}
-            className="text-2xl font-bold hover:text-gray-300"
+            className="text-2xl font-bold hover:text-[#3D4F62]"
           >
             ×
           </button>
@@ -50,11 +50,11 @@ const BookingDetailsModal = ({ booking, onClose }) => {
           {/* Customer Information */}
           <section>
 
-            <h3 className="mb-3 text-lg font-bold text-gray-800">
+            <h3 className="mb-3 text-lg font-bold text-[#3D4F62]">
               Customer Information
             </h3>
 
-            <div className="grid grid-cols-1 gap-3 rounded-xl bg-gray-50 p-4 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-3 rounded-xl bg-[#F8FAFC] p-4 sm:grid-cols-2">
 
               <p>
                 <strong>Name:</strong> {booking.user?.name || 'Not available'}
@@ -80,11 +80,11 @@ const BookingDetailsModal = ({ booking, onClose }) => {
           {/* Room Information */}
           <section>
 
-            <h3 className="mb-3 text-lg font-bold text-gray-800">
+            <h3 className="mb-3 text-lg font-bold text-[#3D4F62]">
               Theater Details
             </h3>
 
-            <div className="grid grid-cols-1 gap-3 rounded-xl bg-gray-50 p-4 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-3 rounded-xl bg-[#F8FAFC] p-4 sm:grid-cols-2">
 
               <p>
                 <strong>Room:</strong> {booking.room?.name || 'Not available'}
@@ -118,11 +118,11 @@ const BookingDetailsModal = ({ booking, onClose }) => {
           {/* Theme */}
           <section>
 
-            <h3 className="mb-3 text-lg font-bold text-gray-800">
+            <h3 className="mb-3 text-lg font-bold text-[#3D4F62]">
               Selected Theme
             </h3>
 
-            <div className="rounded-xl bg-gray-50 p-4">
+            <div className="rounded-xl bg-[#F8FAFC] p-4">
 
               {booking.theme ? (
 
@@ -131,14 +131,14 @@ const BookingDetailsModal = ({ booking, onClose }) => {
                     {booking.theme.emoji} {booking.theme.name}
                   </p>
 
-                  <p className="mt-1 text-purple-700">
+                  <p className="mt-1 text-[#3D4F62]">
                     ₹{booking.theme.price}
                   </p>
                 </>
 
               ) : (
 
-                <p className="text-gray-500">
+                <p className="text-[#3D4F62]">
                   No theme selected
                 </p>
 
@@ -149,19 +149,13 @@ const BookingDetailsModal = ({ booking, onClose }) => {
           </section>
 
 
-          {/* Customizations */}
           <section>
-
-            <h3 className="mb-3 text-lg font-bold text-gray-800">
+            <h3 className="mb-3 text-lg font-bold text-[#3D4F62]">
               Customizations
             </h3>
-
-            <div className="rounded-xl bg-gray-50 p-4">
-
+            <div className="rounded-xl bg-[#F8FAFC] p-4">
               {booking.customizations?.length > 0 ? (
-
                 booking.customizations.map((item, index) => (
-
                   <div
                     key={item.id || index}
                     className="flex justify-between gap-3 border-b py-2 last:border-0"
@@ -172,14 +166,12 @@ const BookingDetailsModal = ({ booking, onClose }) => {
                     <span className="font-semibold">
                       ₹{item.price}
                     </span>
-
                   </div>
-
                 ))
 
               ) : (
 
-                <p className="text-gray-500">
+                <p className="text-[#3D4F62]">
                   No customizations selected
                 </p>
 
@@ -192,11 +184,11 @@ const BookingDetailsModal = ({ booking, onClose }) => {
 
           <section>
 
-            <h3 className="mb-3 text-lg font-bold text-gray-800">
+            <h3 className="mb-3 text-lg font-bold text-[#3D4F62]">
               Surprises
             </h3>
 
-            <div className="rounded-xl bg-gray-50 p-4">
+            <div className="rounded-xl bg-[#F8FAFC] p-4">
 
               {booking.surprises?.length > 0 ? (
 
@@ -219,7 +211,7 @@ const BookingDetailsModal = ({ booking, onClose }) => {
 
               ) : (
 
-                <p className="text-gray-500">
+                <p className="text-[#3D4F62]">
                   No surprises selected
                 </p>
 
@@ -232,11 +224,11 @@ const BookingDetailsModal = ({ booking, onClose }) => {
 
 ]          <section className="flex justify-between border-t pt-5">
 
-            <h3 className="text-lg font-bold text-gray-800">
+            <h3 className="text-lg font-bold text-[#3D4F62]">
               Total Amount
             </h3>
 
-            <p className="text-2xl font-bold text-purple-700">
+            <p className="text-2xl font-bold text-[#3D4F62]">
               ₹{Number(booking.totalPrice || 0).toLocaleString('en-IN')}
             </p>
 
@@ -245,7 +237,7 @@ const BookingDetailsModal = ({ booking, onClose }) => {
 
           <button
             onClick={onClose}
-            className="w-full rounded-xl bg-purple-700 py-3 font-semibold text-white hover:bg-purple-800"
+            className="w-full rounded-xl bg-[#3D4F62] py-3 font-semibold text-[#F8FAFC] hover:bg-[#3D4F62]"
           >
             Close
           </button>

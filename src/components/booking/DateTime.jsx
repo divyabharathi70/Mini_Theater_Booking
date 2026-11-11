@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { notify } from '../UiNotice'
 
 const DateTime = () => {
   const location = useLocation()
@@ -34,17 +35,17 @@ const DateTime = () => {
 
   const handleNext = () => {
     if (!date || !startTime || !endTime) {
-      alert('Please select the date, start time and end time')
+      notify('Please select the date, start time and end time')
       return
     }
 
     if (date < minDate) {
-      alert('Please select today or a future date')
+      notify('Please select today or a future date')
       return
     }
 
     if (duration <= 0) {
-      alert('End time must be later than start time')
+      notify('End time must be later than start time')
       return
     }
 
@@ -69,7 +70,7 @@ const DateTime = () => {
 
         <button
           onClick={() => navigate('/')}
-          className="mt-4 rounded-lg bg-purple-600 px-6 py-2 text-white">
+          className="mt-4 rounded-lg bg-[#3D4F62] px-6 py-2 text-[#F8FAFC]">
           Go to Home
         </button>
       </div>
@@ -77,15 +78,15 @@ const DateTime = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6 md:p-10">
+    <div className="min-h-screen bg-[#F8FAFC] p-6 md:p-10">
 
-      <h1 className="mb-8 text-center text-3xl font-bold text-purple-700">
+      <h1 className="mb-8 text-center text-3xl font-bold text-[#3D4F62]">
         Book Your Theater
       </h1>
 
       <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-2">
 
-        <div className="rounded-2xl bg-white p-6 shadow-lg">
+        <div className="rounded-2xl bg-[#F8FAFC] p-6 shadow-lg">
 
           <img
             src={room.image}
@@ -97,21 +98,21 @@ const DateTime = () => {
             {room.name}
           </h2>
 
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-[#3D4F62]">
             Capacity: {room.capacity} people
           </p>
 
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-[#3D4F62]">
             Amenities: {room.amenities.join(', ')}
           </p>
 
-          <p className="mt-4 text-lg font-semibold text-purple-700">
+          <p className="mt-4 text-lg font-semibold text-[#3D4F62]">
             ₹{room.price} / hour
           </p>
 
         </div>
 
-        <div className="rounded-2xl bg-white p-6 shadow-lg">
+        <div className="rounded-2xl bg-[#F8FAFC] p-6 shadow-lg">
 
           <h2 className="mb-6 text-2xl font-bold">
             Select Date & Time
@@ -157,7 +158,7 @@ const DateTime = () => {
             />
           </div>
 
-          <div className="mt-6 rounded-xl bg-purple-50 p-5">
+          <div className="mt-6 rounded-xl bg-[#F8FAFC] p-5">
 
             <div className="mb-3 flex justify-between">
               <span>Price per hour</span>
@@ -171,7 +172,7 @@ const DateTime = () => {
               </span>
             </div>
 
-            <div className="flex justify-between border-t border-purple-200 pt-3 text-lg font-bold">
+            <div className="flex justify-between border-t border-[#3D4F62] pt-3 text-lg font-bold">
               <span>Total Price</span>
               <span>₹{totalPrice}</span>
             </div>
@@ -180,7 +181,7 @@ const DateTime = () => {
 
           <button
             onClick={handleNext}
-            className="mt-6 w-full rounded-xl bg-purple-600 p-3 font-semibold text-white hover:bg-purple-700"
+            className="mt-6 w-full rounded-xl bg-[#3D4F62] p-3 font-semibold text-[#F8FAFC] hover:bg-[#3D4F62]"
           >
             Next: Theme Selection
           </button>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import {customizations} from '../../datas/Customization'
+import { readCatalog } from '../../datas/catalogStorage'
 
 const Customization = () => {
   const location = useLocation()
@@ -8,6 +8,7 @@ const Customization = () => {
 
   const booking = location.state
   const [selectedCustomizations, setSelectedCustomizations] = useState([])
+  const [customizations] = useState(() => readCatalog('customizations'))
 
   const basePrice = booking?.totalPrice || 0
 
@@ -67,7 +68,7 @@ const Customization = () => {
 
         <button
           onClick={() => navigate('/')}
-          className="mt-4 rounded-lg bg-purple-600 px-6 py-2 text-white"
+          className="mt-4 rounded-lg bg-[#3D4F62] px-6 py-2 text-[#F8FAFC]"
         >
           Go to Home
         </button>
@@ -76,25 +77,25 @@ const Customization = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6 md:p-10">
+    <div className="min-h-screen bg-[#F8FAFC] p-6 md:p-10">
 
       <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold text-purple-700">
+        <h1 className="text-3xl font-bold text-[#3D4F62]">
           Customize Your Theater
         </h1>
 
-        <p className="mt-2 text-gray-600">
+        <p className="mt-2 text-[#3D4F62]">
           Add special decorations to make your experience unforgettable.
         </p>
       </div>
 
-      <div className="mx-auto mb-8 max-w-5xl rounded-xl bg-white p-5 shadow">
+      <div className="mx-auto mb-8 max-w-5xl rounded-xl bg-[#F8FAFC] p-5 shadow">
 
         <h2 className="text-xl font-bold">
           {booking.room.name}
         </h2>
 
-        <div className="mt-3 flex flex-wrap gap-4 text-gray-600">
+        <div className="mt-3 flex flex-wrap gap-4 text-[#3D4F62]">
           <p>Date: {booking.date}</p>
           <p>Start: {booking.startTime}</p>
           <p>End: {booking.endTime}</p>
@@ -104,7 +105,7 @@ const Customization = () => {
         {booking.theme && (
           <p className="mt-3">
             Selected Theme:{' '}
-            <span className="font-semibold text-purple-700">
+            <span className="font-semibold text-[#3D4F62]">
               {booking.theme.name}
             </span>
           </p>
@@ -122,10 +123,10 @@ const Customization = () => {
           return (
             <div
               key={item.id}
-              className={`flex flex-col rounded-2xl border-2 bg-white p-6 shadow-md transition hover:shadow-xl ${
+              className={`flex flex-col rounded-2xl border-2 bg-[#F8FAFC] p-6 shadow-md transition hover:shadow-xl ${
                 isSelected
-                  ? 'border-purple-600 bg-purple-50'
-                  : 'border-gray-200'
+                  ? 'border-[#3D4F62] bg-[#F8FAFC]'
+                  : 'border-[#3D4F62]'
               }`}
             >
 
@@ -137,11 +138,11 @@ const Customization = () => {
                 {item.name}
               </h2>
 
-              <p className="mt-3 flex-grow text-center text-gray-600">
+              <p className="mt-3 flex-grow text-center text-[#3D4F62]">
                 {item.description}
               </p>
 
-              <p className="mt-4 text-center text-xl font-bold text-purple-700">
+              <p className="mt-4 text-center text-xl font-bold text-[#3D4F62]">
                 ₹{item.price}
               </p>
 
@@ -149,8 +150,8 @@ const Customization = () => {
                 onClick={() => handleSelect(item)}
                 className={`mt-5 w-full rounded-xl p-3 font-semibold transition ${
                   isSelected
-                    ? 'bg-purple-700 text-white'
-                    : 'bg-purple-100 text-purple-700 hover:bg-purple-200'
+                    ? 'bg-[#3D4F62] text-[#F8FAFC]'
+                    : 'bg-[#F8FAFC] text-[#3D4F62] hover:bg-[#F8FAFC]'
                 }`}
               >
                 {isSelected ? '✓ Selected' : 'Add Customization'}
@@ -162,7 +163,7 @@ const Customization = () => {
 
       </div>
 
-      <div className="mx-auto mt-8 max-w-5xl rounded-2xl bg-white p-6 shadow-lg">
+      <div className="mx-auto mt-8 max-w-5xl rounded-2xl bg-[#F8FAFC] p-6 shadow-lg">
 
         <h2 className="mb-4 text-xl font-bold">
           Booking Summary
@@ -176,14 +177,14 @@ const Customization = () => {
         {selectedCustomizations.map((item) => (
           <div
             key={item.id}
-            className="flex justify-between py-2 text-gray-600"
+            className="flex justify-between py-2 text-[#3D4F62]"
           >
             <span>{item.name}</span>
             <span>₹{item.price}</span>
           </div>
         ))}
 
-        <div className="flex justify-between border-t pt-4 text-xl font-bold text-purple-700">
+        <div className="flex justify-between border-t pt-4 text-xl font-bold text-[#3D4F62]">
           <span>Total Price</span>
           <span>₹{totalPrice}</span>
         </div>
@@ -192,14 +193,14 @@ const Customization = () => {
 
           <button
             onClick={handleSkip}
-            className="w-full rounded-xl border-2 border-purple-600 p-3 font-semibold text-purple-700 hover:bg-purple-50"
+            className="w-full rounded-xl border-2 border-[#3D4F62] p-3 font-semibold text-[#3D4F62] hover:bg-[#F8FAFC]"
           >
             Skip Customization
           </button>
 
           <button
             onClick={handleNext}
-            className="w-full rounded-xl bg-purple-600 p-3 font-semibold text-white hover:bg-purple-700"
+            className="w-full rounded-xl bg-[#3D4F62] p-3 font-semibold text-[#F8FAFC] hover:bg-[#3D4F62]"
           >
             Next: Surprise Selection
           </button>

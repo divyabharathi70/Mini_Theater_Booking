@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { notify } from '../../components/UiNotice'
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -29,25 +30,25 @@ function Login() {
         JSON.stringify(activeUser)
       );
 
-      alert("Login Successful");
+      notify("Login Successful");
 
       navigate("/");
     } else {
-      alert("Invalid Email or Password");
+      notify("Invalid Email or Password");
       navigate("/signup")
     }
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-purple-50 px-4 py-10">
-      <div className="w-full max-w-md rounded-3xl bg-white p-8 shadow-xl sm:p-10">
+    <div className="flex min-h-screen items-center justify-center bg-[#F8FAFC] px-4 py-10">
+      <div className="w-full max-w-md rounded-3xl bg-[#F8FAFC] p-8 shadow-xl sm:p-10">
 
         <div className="mb-8 text-center">
-          <h2 className="text-3xl font-bold text-purple-700">
+          <h2 className="text-3xl font-bold text-[#3D4F62]">
             Welcome Back!
           </h2>
 
-          <p className="mt-2 text-gray-500">
+          <p className="mt-2 text-[#3D4F62]">
             Sign in to your Mini Theater account
           </p>
         </div>
@@ -55,7 +56,7 @@ function Login() {
         <form onSubmit={handleLogin} className="space-y-5">
 
           <div>
-            <label className="mb-2 block text-sm font-semibold text-gray-700">
+            <label className="mb-2 block text-sm font-semibold text-[#3D4F62]">
               Email Address
             </label>
 
@@ -65,12 +66,12 @@ function Login() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-gray-800 outline-none transition focus:border-purple-500 focus:ring-2 focus:ring-purple-200"
+              className="w-full rounded-xl border border-[#3D4F62] bg-[#F8FAFC] px-4 py-3 text-[#3D4F62] outline-none transition focus:border-[#3D4F62] focus:ring-2 focus:ring-[#3D4F62]"
             />
           </div>
 
           <div>
-            <label className="mb-2 block text-sm font-semibold text-gray-700">
+            <label className="mb-2 block text-sm font-semibold text-[#3D4F62]">
               Password
             </label>
 
@@ -80,34 +81,34 @@ function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-gray-800 outline-none transition focus:border-purple-500 focus:ring-2 focus:ring-purple-200"
+              className="w-full rounded-xl border border-[#3D4F62] bg-[#F8FAFC] px-4 py-3 text-[#3D4F62] outline-none transition focus:border-[#3D4F62] focus:ring-2 focus:ring-[#3D4F62]"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full rounded-xl bg-purple-600 py-3 font-semibold text-white shadow-md transition hover:bg-purple-700 hover:shadow-lg active:scale-95"
+            className="w-full rounded-xl bg-[#3D4F62] py-3 font-semibold text-[#F8FAFC] shadow-md transition hover:bg-[#3D4F62] hover:shadow-lg active:scale-95"
           >
             Login
           </button>
 
         </form>
 
-        <div className="mt-8 border-t border-gray-100 pt-6 text-center">
-          <p className="text-sm text-gray-600">
+        <div className="mt-8 border-t border-[#3D4F62] pt-6 text-center">
+          <p className="text-sm text-[#3D4F62]">
             Don't have an account?
           </p>
 
           <button
             type="button"
             onClick={() => navigate("/signup")}
-            className="mt-2 font-semibold text-purple-600 transition hover:text-purple-800 hover:underline"
+            className="mt-2 font-semibold text-[#3D4F62] transition hover:text-[#3D4F62] hover:underline"
           >
             Create an Account
           </button>
         </div>
 
-        <p className="mt-6 text-center text-xs text-gray-400">
+        <p className="mt-6 text-center text-xs text-[#3D4F62]">
           Your private theater experience starts here.
         </p>
 

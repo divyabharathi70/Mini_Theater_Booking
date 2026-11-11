@@ -5,17 +5,17 @@ const About = () => {
 
   return (
 
-    <div className="min-h-screen bg-gray-950 text-white">
+    <div className="min-h-screen bg-[#F8FAFC] text-[#3D4F62]">
 
       {/* Heading */}
 
       <section className="text-center py-16 px-5">
 
-        <h1 className="text-4xl font-bold text-purple-500">
+        <h1 className="text-4xl font-bold text-[#3D4F62]">
           About Mini Theater
         </h1>
 
-        <p className="text-gray-400 mt-4">
+        <p className="text-[#3D4F62] mt-4">
           Your Movies, Your Moments, Your Theater.
         </p>
 
@@ -32,13 +32,13 @@ const About = () => {
             Welcome to Mini Theater 🎬
           </h2>
 
-          <p className="text-gray-400 leading-8">
+          <p className="text-[#3D4F62] leading-8">
             Mini Theater is a movie booking platform where users
             can explore movies, select their favorite seats and
             book tickets easily.
           </p>
 
-          <p className="text-gray-400 leading-8 mt-4">
+          <p className="text-[#3D4F62] leading-8 mt-4">
             Our goal is to make movie booking simple, fast and
             enjoyable for everyone.
           </p>
@@ -60,7 +60,7 @@ const About = () => {
 
       {/* Features */}
 
-      <section className="bg-gray-900 py-16 px-6">
+      <section className="bg-[#F8FAFC] py-16 px-6 text-[#3D4F62]">
 
         <h2 className="text-3xl font-bold text-center mb-10">
           What We Offer
@@ -68,39 +68,39 @@ const About = () => {
 
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
 
-          <div className="bg-gray-800 p-8 rounded-xl text-center">
+          <div className="bg-[#F8FAFC] text-[#3D4F62] border border-[#3D4F62]/10 p-8 rounded-xl text-center shadow-sm">
 
-            <h3 className="text-xl font-bold text-purple-400">
+            <h3 className="text-xl font-bold text-[#3D4F62]">
               🎥 Explore Movies
             </h3>
 
-            <p className="text-gray-400 mt-4">
+            <p className="text-[#3D4F62] mt-4">
               Discover your favorite movies and new releases.
             </p>
 
           </div>
 
 
-          <div className="bg-gray-800 p-8 rounded-xl text-center">
+          <div className="bg-[#F8FAFC] text-[#3D4F62] border border-[#3D4F62]/10 p-8 rounded-xl text-center shadow-sm">
 
-            <h3 className="text-xl font-bold text-purple-400">
+            <h3 className="text-xl font-bold text-[#3D4F62]">
               💺 Select Seats
             </h3>
 
-            <p className="text-gray-400 mt-4">
+            <p className="text-[#3D4F62] mt-4">
               Choose your preferred seats before booking.
             </p>
 
           </div>
 
 
-          <div className="bg-gray-800 p-8 rounded-xl text-center">
+          <div className="bg-[#F8FAFC] text-[#3D4F62] border border-[#3D4F62]/10 p-8 rounded-xl text-center shadow-sm">
 
-            <h3 className="text-xl font-bold text-purple-400">
+            <h3 className="text-xl font-bold text-[#3D4F62]">
               🎟️ Easy Booking
             </h3>
 
-            <p className="text-gray-400 mt-4">
+            <p className="text-[#3D4F62] mt-4">
               Book your movie tickets with a simple process.
             </p>
 
@@ -112,7 +112,7 @@ const About = () => {
       
 <section className="px-6 md:px-16 py-16">
 
-  <div className="bg-gray-900 rounded-2xl p-8 md:p-12">
+  <div className="bg-[#F8FAFC] text-[#3D4F62] rounded-2xl p-8 md:p-12">
 
     <div className="grid md:grid-cols-2 gap-10 items-center">
 
@@ -124,12 +124,12 @@ const About = () => {
           Enjoy Your Movie Experience 🎬
         </h2>
 
-        <p className="text-gray-400 mt-5 leading-7">
+        <p className="text-[#3D4F62] mt-5 leading-7">
           Watch your favorite movies, select comfortable seats
           and enjoy every moment with Mini Theater.
         </p>
 
-        <button className="mt-6 bg-purple-600 px-6 py-3 rounded-lg hover:bg-purple-700">
+        <button className="mt-6 bg-[#3D4F62] text-[#F8FAFC] px-6 py-3 rounded-lg">
           Book Your Movie →
         </button>
 
@@ -139,24 +139,24 @@ const About = () => {
 
       <div className="grid grid-cols-2 gap-4">
 
-        <div className="bg-gray-800 p-6 rounded-xl text-center">
-          <h2 className="text-3xl font-bold text-purple-400">4K</h2>
-          <p className="text-gray-400 mt-2">Visual Quality</p>
+        <div className="bg-[#F8FAFC] text-[#3D4F62] border border-[#3D4F62]/10 p-6 rounded-xl text-center shadow-sm">
+          <h2 className="text-3xl font-bold text-[#3D4F62]">4K</h2>
+          <p className="text-[#3D4F62] mt-2">Visual Quality</p>
         </div>
 
-        <div className="bg-gray-800 p-6 rounded-xl text-center">
-          <h2 className="text-3xl font-bold text-purple-400">HD</h2>
-          <p className="text-gray-400 mt-2">Sound Quality</p>
+        <div className="bg-[#F8FAFC] text-[#3D4F62] border border-[#3D4F62]/10 p-6 rounded-xl text-center shadow-sm">
+          <h2 className="text-3xl font-bold text-[#3D4F62]">HD</h2>
+          <p className="text-[#3D4F62] mt-2">Sound Quality</p>
         </div>
 
-        <div className="bg-gray-800 p-6 rounded-xl text-center">
-          <h2 className="text-3xl font-bold text-purple-400">100%</h2>
-          <p className="text-gray-400 mt-2">Comfort</p>
+        <div className="bg-[#F8FAFC] text-[#3D4F62] border border-[#3D4F62]/10 p-6 rounded-xl text-center shadow-sm">
+          <h2 className="text-3xl font-bold text-[#3D4F62]">100%</h2>
+          <p className="text-[#3D4F62] mt-2">Comfort</p>
         </div>
 
-        <div className="bg-gray-800 p-6 rounded-xl text-center">
-          <h2 className="text-3xl font-bold text-purple-400">VIP</h2>
-          <p className="text-gray-400 mt-2">Premium Seats</p>
+        <div className="bg-[#F8FAFC] text-[#3D4F62] border border-[#3D4F62]/10 p-6 rounded-xl text-center shadow-sm">
+          <h2 className="text-3xl font-bold text-[#3D4F62]">VIP</h2>
+          <p className="text-[#3D4F62] mt-2">Premium Seats</p>
         </div>
 
       </div>
@@ -177,7 +177,7 @@ const About = () => {
           Enjoy Your Movie Time! 🍿
         </h2>
 
-        <p className="text-gray-400 mt-3">
+        <p className="text-[#3D4F62] mt-3">
           Thank you for choosing Mini Theater.
         </p>
 

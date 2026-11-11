@@ -1,6 +1,7 @@
 
 import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { notify } from '../UiNotice'
 
 const BookingReview = () => {
 
@@ -25,7 +26,7 @@ const BookingReview = () => {
 
         <button
           onClick={() => navigate('/')}
-          className="mt-4 rounded-lg bg-purple-600 px-6 py-2 text-white"
+          className="mt-4 rounded-lg bg-[#3D4F62] px-6 py-2 text-[#F8FAFC]"
         >
           Go to Home
         </button>
@@ -62,7 +63,7 @@ const BookingReview = () => {
 
   const handlePayment = () => {
     if (!currentUser) {
-      alert('Please login before making a payment.')
+      notify('Please login before making a payment.')
       navigate('/login')
       return
     }
@@ -96,18 +97,18 @@ const BookingReview = () => {
 
   if(paymentDone) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-100 p-6">
-        <div className="w-full max-w-lg rounded-2xl bg-white p-10 text-center shadow-xl"> 
-          <h1 className="text-3xl font-bold text-green-600">
+      <div className="flex min-h-screen items-center justify-center bg-[#F8FAFC] p-6">
+        <div className="w-full max-w-lg rounded-2xl bg-[#F8FAFC] p-10 text-center shadow-xl"> 
+          <h1 className="text-3xl font-bold text-[#3D4F62]">
             Payment Successful!
           </h1>
 
-          <p className="mt-4 text-gray-600">
+          <p className="mt-4 text-[#3D4F62]">
             Your theater booking has been confirmed.
           </p>
 
-          <div className="mt-6 rounded-xl bg-green-50 p-5">
-            <p className="text-gray-600">
+          <div className="mt-6 rounded-xl bg-[#F8FAFC] p-5">
+            <p className="text-[#3D4F62]">
               Booking ID
             </p>
 
@@ -115,18 +116,18 @@ const BookingReview = () => {
               BK{savedBookingId}
             </p>
 
-            <p className="mt-4 text-gray-600">
+            <p className="mt-4 text-[#3D4F62]">
               Amount Paid
             </p>
 
-            <p className="mt-1 text-2xl font-bold text-green-700">
+            <p className="mt-1 text-2xl font-bold text-[#3D4F62]">
               ₹{totalPrice}
             </p>
           </div>
 
           <button
             onClick={() => navigate('/')}
-            className="mt-6 w-full rounded-xl bg-purple-600 p-3 font-semibold text-white hover:bg-purple-700"
+            className="mt-6 w-full rounded-xl bg-[#3D4F62] p-3 font-semibold text-[#F8FAFC] hover:bg-[#3D4F62]"
           >
             Back to Home
           </button>
@@ -138,19 +139,19 @@ const BookingReview = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6 md:p-10">
+    <div className="min-h-screen bg-[#F8FAFC] p-6 md:p-10">
       <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold text-purple-700">
+        <h1 className="text-3xl font-bold text-[#3D4F62]">
           Review Your Booking
         </h1>
-        <p className="mt-2 text-gray-600">
+        <p className="mt-2 text-[#3D4F62]">
           Check your selections before completing your booking.
         </p>
       </div>
 
 
       <div className="mx-auto max-w-4xl space-y-6">
-        <div className="rounded-2xl bg-white p-6 shadow-lg">
+        <div className="rounded-2xl bg-[#F8FAFC] p-6 shadow-lg">
           <h2 className="mb-4 text-xl font-bold">
             Selected Theater
           </h2>
@@ -178,7 +179,7 @@ const BookingReview = () => {
         </div>
 
 
-        <div className="rounded-2xl bg-white p-6 shadow-lg">
+        <div className="rounded-2xl bg-[#F8FAFC] p-6 shadow-lg">
           <h2 className="mb-4 text-xl font-bold">
             Selected Theme
           </h2>
@@ -190,7 +191,7 @@ const BookingReview = () => {
               </span>
             </div>
           ) : (
-            <p className="text-gray-500">
+            <p className="text-[#3D4F62]">
               No theme selected
             </p>
           )}
@@ -198,7 +199,7 @@ const BookingReview = () => {
         </div>
 
 
-        <div className="rounded-2xl bg-white p-6 shadow-lg">
+        <div className="rounded-2xl bg-[#F8FAFC] p-6 shadow-lg">
           <h2 className="mb-4 text-xl font-bold">
             Selected Customizations
           </h2>
@@ -217,7 +218,7 @@ const BookingReview = () => {
 
           ) : (
 
-            <p className="text-gray-500">
+            <p className="text-[#3D4F62]">
               No customizations selected
             </p>
 
@@ -226,7 +227,7 @@ const BookingReview = () => {
         </div>
 
 
-        <div className="rounded-2xl bg-white p-6 shadow-lg">
+        <div className="rounded-2xl bg-[#F8FAFC] p-6 shadow-lg">
           <h2 className="mb-4 text-xl font-bold">
             Selected Surprises
           </h2>
@@ -246,7 +247,7 @@ const BookingReview = () => {
 
           ) : (
 
-            <p className="text-gray-500">
+            <p className="text-[#3D4F62]">
               No surprises selected
             </p>
 
@@ -255,7 +256,7 @@ const BookingReview = () => {
         </div>
 
 
-        <div className="rounded-2xl bg-purple-50 p-6 shadow-lg">
+        <div className="rounded-2xl bg-[#F8FAFC] p-6 shadow-lg">
 
           <h2 className="mb-4 text-xl font-bold">
             Price Summary
@@ -284,19 +285,19 @@ const BookingReview = () => {
             <span>₹{surprisePrice}</span>
           </div>
 
-          <div className="mt-4 flex justify-between border-t border-purple-200 pt-4 text-2xl font-bold text-purple-700">
+          <div className="mt-4 flex justify-between border-t border-[#3D4F62] pt-4 text-2xl font-bold text-[#3D4F62]">
             <span>Total Amount</span>
             <span>₹{totalPrice}</span>
           </div>
 
           <button
             onClick={handlePayment}
-            className="mt-6 w-full rounded-xl bg-green-600 p-4 text-lg font-bold text-white hover:bg-green-700"
+            className="mt-6 w-full rounded-xl bg-[#3D4F62] p-4 text-lg font-bold text-[#F8FAFC] hover:bg-[#3D4F62]"
           >
             Pay Now — ₹{totalPrice}
           </button>
 
-          <p className="mt-3 text-center text-sm text-gray-500">
+          <p className="mt-3 text-center text-sm text-[#3D4F62]">
             Demo payment for your frontend project.
           </p>
         </div>

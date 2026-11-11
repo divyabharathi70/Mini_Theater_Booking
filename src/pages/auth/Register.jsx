@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { notify } from '../../components/UiNotice'
 
 function Register() {
   const [name, setName] = useState("");
@@ -16,7 +17,7 @@ function Register() {
     let exist = users.find((user) => user.email === email);
 
     if (exist) {
-      alert("Email already registered");
+      notify("Email already registered");
       return;
     }
 
@@ -30,26 +31,26 @@ function Register() {
     users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
 
-    alert("Registration Successful");
+    notify("Registration Successful");
     navigate("/login");
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-purple-50 px-4 py-10">
-      <div className="w-full max-w-md rounded-3xl bg-white p-8 shadow-xl sm:p-10">
+    <div className="flex min-h-screen items-center justify-center bg-[#F8FAFC] px-4 py-10">
+      <div className="w-full max-w-md rounded-3xl bg-[#F8FAFC] p-8 shadow-xl sm:p-10">
         <div className="mb-8 text-center">
-          <h2 className="text-3xl font-bold text-purple-700">
+          <h2 className="text-3xl font-bold text-[#3D4F62]">
             Create Account
           </h2>
 
-          <p className="mt-2 text-gray-500">
+          <p className="mt-2 text-[#3D4F62]">
             Join us for your special theater experience!
           </p>
         </div>
 
         <form onSubmit={handleRegister} className="space-y-5">
           <div>
-            <label className="mb-2 block text-sm font-semibold text-gray-700">
+            <label className="mb-2 block text-sm font-semibold text-[#3D4F62]">
               Full Name
             </label>
 
@@ -59,12 +60,12 @@ function Register() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-gray-800 outline-none transition focus:border-purple-500 focus:ring-2 focus:ring-purple-200"
+              className="w-full rounded-xl border border-[#3D4F62] bg-[#F8FAFC] px-4 py-3 text-[#3D4F62] outline-none transition focus:border-[#3D4F62] focus:ring-2 focus:ring-[#3D4F62]"
             />
           </div>
 
           <div>
-            <label className="mb-2 block text-sm font-semibold text-gray-700">
+            <label className="mb-2 block text-sm font-semibold text-[#3D4F62]">
               Email Address
             </label>
 
@@ -74,11 +75,11 @@ function Register() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-gray-800 outline-none transition focus:border-purple-500 focus:ring-2 focus:ring-purple-200"
+              className="w-full rounded-xl border border-[#3D4F62] bg-[#F8FAFC] px-4 py-3 text-[#3D4F62] outline-none transition focus:border-[#3D4F62] focus:ring-2 focus:ring-[#3D4F62]"
             />
           </div>
           <div>
-  <label className="mb-2 block text-sm font-semibold text-gray-700">
+  <label className="mb-2 block text-sm font-semibold text-[#3D4F62]">
     Mobile Number
   </label>
 
@@ -88,12 +89,12 @@ function Register() {
     value={phone}
     onChange={(e) => setPhone(e.target.value)}
     required
-    className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-gray-800 outline-none focus:border-purple-500"
+    className="w-full rounded-xl border border-[#3D4F62] bg-[#F8FAFC] px-4 py-3 text-[#3D4F62] outline-none focus:border-[#3D4F62]"
   />
 </div>
 
           <div>
-            <label className="mb-2 block text-sm font-semibold text-gray-700">
+            <label className="mb-2 block text-sm font-semibold text-[#3D4F62]">
               Password
             </label>
 
@@ -103,33 +104,33 @@ function Register() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-gray-800 outline-none transition focus:border-purple-500 focus:ring-2 focus:ring-purple-200"
+              className="w-full rounded-xl border border-[#3D4F62] bg-[#F8FAFC] px-4 py-3 text-[#3D4F62] outline-none transition focus:border-[#3D4F62] focus:ring-2 focus:ring-[#3D4F62]"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full rounded-xl bg-purple-600 py-3 font-semibold text-white shadow-md transition hover:bg-purple-700 hover:shadow-lg active:scale-95"
+            className="w-full rounded-xl bg-[#3D4F62] py-3 font-semibold text-[#F8FAFC] shadow-md transition hover:bg-[#3D4F62] hover:shadow-lg active:scale-95"
           >
             Create Account
           </button>
         </form>
 
-        <div className="mt-8 border-t border-gray-100 pt-6 text-center">
-          <p className="text-sm text-gray-600">
+        <div className="mt-8 border-t border-[#3D4F62] pt-6 text-center">
+          <p className="text-sm text-[#3D4F62]">
             Already have an account?
           </p>
 
           <button
             type="button"
             onClick={() => navigate("/login")}
-            className="mt-2 font-semibold text-purple-600 transition hover:text-purple-800 hover:underline"
+            className="mt-2 font-semibold text-[#3D4F62] transition hover:text-[#3D4F62] hover:underline"
           >
             Login
           </button>
         </div>
 
-        <p className="mt-6 text-center text-xs text-gray-400">
+        <p className="mt-6 text-center text-xs text-[#3D4F62]">
           Your perfect theater experience starts here.
         </p>
       </div>

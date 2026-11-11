@@ -28,7 +28,7 @@ const AppRoutes = () => {
 
   return (
     <div>
-      {!isPrivatePage && location.pathname !== '/' && <CustomerNavbar />}
+      {!isPrivatePage && <CustomerNavbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/rooms" element={<Rooms />} />

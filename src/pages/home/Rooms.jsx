@@ -26,7 +26,7 @@ function Rooms() {
 
   if (location.pathname === '/rooms') {
     return <main className="min-h-screen bg-[#F8FAFC] p-8">
-      <header className="mb-12 flex items-center justify-between"><h1 className="text-3xl font-bold text-[#3D4F62]">Choose a booking type</h1><Link to="/" className="rounded-lg bg-[#F8FAFC] px-4 py-2 font-semibold text-[#3D4F62]">Home</Link></header>
+      <header className="mb-12"><h1 className="text-3xl font-bold text-[#3D4F62]">Choose a booking type</h1></header>
       <section className="mx-auto grid max-w-4xl gap-8 md:grid-cols-2">
         <button onClick={() => navigate('/rooms/whole')} className="rounded-2xl bg-[#F8FAFC] p-10 text-left shadow-lg hover:shadow-xl"><span className="text-sm font-bold text-[#3D4F62]">OPTION 1</span><h2 className="mt-3 text-2xl font-bold">Whole room booking</h2><p className="mt-3 text-[#3D4F62]">Book a private theater room for your group.</p><span className="mt-6 inline-block rounded-lg bg-[#3D4F62] px-5 py-3 font-semibold text-[#F8FAFC]">View rooms</span></button>
         <button onClick={() => navigate('/rooms/seats')} className="rounded-2xl bg-[#F8FAFC] p-10 text-left shadow-lg hover:shadow-xl"><span className="text-sm font-bold text-[#3D4F62]">OPTION 2</span><h2 className="mt-3 text-2xl font-bold">Seat booking</h2><p className="mt-3 text-[#3D4F62]">Choose a room, showtime, and individual seats.</p><span className="mt-6 inline-block rounded-lg bg-[#3D4F62] px-5 py-3 font-semibold text-[#F8FAFC]">View seat rooms</span></button>

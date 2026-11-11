@@ -1,8 +1,7 @@
 
-import Logo from '../../asserts/images/Logo.jpeg'
 import CinemaBanner from '../../asserts/images/CinemaBanner.png'
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { initialRooms, roomImages } from '../../datas/TheaterDatas.js'
 import About from '../../components/about/About'
 import Feedback from '../../components/feedback/FeedBack'
@@ -14,15 +13,6 @@ import photoPrintsImage from '../../asserts/images/service-photo-prints.jpg'
 const Home = () => {
   const navigate = useNavigate()
 
-  const [currentUser, setCurrentUser] = useState(() => {
-    try {
-      return JSON.parse(localStorage.getItem('currentUser')) || null
-    } catch {
-      return null
-    }
-  })
-
-  const [showMenu, setShowMenu] = useState(false)
   const services = [
     { title: 'Cakes & Bouquets', description: 'Celebrate with a freshly arranged cake and a beautiful bouquet for your special moment.', image: cakeBouquetImage },
     { title: 'Personalized Décor', description: 'Set the scene with custom decorations made for birthdays, anniversaries, proposals, and more.', image: decorImage },
@@ -46,7 +36,7 @@ const Home = () => {
   })
 
   const handleBookRoom = (room) => {
-    if (!currentUser) {
+    if (!localStorage.getItem('currentUser')) {
       navigate('/signup')
       return
     }
@@ -54,116 +44,8 @@ const Home = () => {
     navigate('/booking', { state: { room } })
   }
 
-  const handleSignOut = () => {
-    localStorage.removeItem('currentUser')
-    setCurrentUser(null)
-    setShowMenu(false)
-    navigate('/')
-  }
-
   return (
     <>
-      {/* Navbar */}
-      <section>
-        <div className="bg-[#3D4F62] text-[#F8FAFC] flex flex-wrap justify-between items-center px-8 py-4">
-
-          <div className="flex justify-center items-center">
-            <img
-              src={Logo}
-              alt="Mini Theater logo"
-              className="h-12 w-auto rounded-2xl"
-            />
-            <span className="ml-3 text-2xl font-bold text-[#F8FAFC]">Momentora</span>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-6">
-
-            <Link to="/" className="hover:text-[#F8FAFC]">
-              Home
-            </Link>
-
-            <Link to="/rooms" className="hover:text-[#F8FAFC]">
-              Rooms
-            </Link>
-
-            <a href="#services" className="hover:text-[#F8FAFC]">
-              Services
-            </a>
-
-            <a href="#how-it-works" className="hover:text-[#F8FAFC]">
-              How It Works
-            </a>
-
-            <Link to="/mybookings" className="hover:text-[#F8FAFC]">
-              My Bookings
-            </Link>
-
-            <Link to="/about" className="hover:text-[#F8FAFC]">
-              About
-            </Link>
-
-            <a href="#feedback" className="hover:text-[#F8FAFC]">Feedback</a>
-
-            {!currentUser ? (
-              <>
-                <Link
-                  to="/login"
-                  className="bg-[#F8FAFC] text-[#3D4F62] p-2 rounded-2xl"
-                >
-                  Login
-                </Link>
-
-                <Link
-                  to="/signup"
-                  className="bg-[#F8FAFC] text-[#3D4F62] p-2 rounded-2xl"
-                >
-                  SignUp
-                </Link>
-              </>
-            ) : (
-              <div className="relative">
-
-                {/* Profile Icon */}
-                <button
-                  onClick={() => setShowMenu(!showMenu)}
-                  className="flex flex-col items-center"
-                >
-                  <div className="w-10 h-10 rounded-full bg-[#F8FAFC] text-[#3D4F62] flex items-center justify-center overflow-hidden text-xl font-bold">
-
-                    {currentUser.name?.charAt(0).toUpperCase() || 'U'}
-
-                  </div>
-                </button>
-
-                {/* Dropdown Menu */}
-                {showMenu && (
-                  <div className="absolute right-0 top-16 w-36 bg-[#F8FAFC] shadow-lg rounded-lg border z-50">
-
-                    <Link
-                      to="/profile"
-                      onClick={() => setShowMenu(false)}
-                      className="block px-4 py-3 hover:bg-[#F8FAFC] text-[#3D4F62]"
-                    >
-                      Profile
-                    </Link>
-
-                    <button
-                      onClick={handleSignOut}
-                      className="block w-full text-left px-4 py-3 hover:bg-[#F8FAFC] text-[#3D4F62]"
-                    >
-                      Sign Out
-                    </button>
-
-                  </div>
-                )}
-
-              </div>
-            )}
-
-          </div>
-        </div>
-      </section>
-
       {/* Full Width Banner */}
       <section className="w-full">
 
@@ -210,26 +92,27 @@ const Home = () => {
       </section>
 
       {/* Room Cards */}
-      <section>
+      <section className="bg-[#F8FAFC] px-8 pt-14">
+        <h2 className="mx-auto mb-8 max-w-6xl text-center text-3xl font-bold text-[#3D4F62]">Popular Rooms</h2>
 
-        <div className="bg-[#F8FAFC] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center p-10">
+        <div className="mx-auto grid max-w-6xl auto-rows-fr grid-cols-1 items-stretch justify-center gap-12 pb-8 md:grid-cols-2 lg:grid-cols-3">
 
           {rooms.map((room) => (
 
             <div
               key={room.id}
-              className="bg-[#F8FAFC] flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-xl transition-shadow"
+                className="flex h-full flex-col overflow-hidden rounded-xl bg-[#F8FAFC] shadow-md transition-shadow hover:shadow-xl"
             >
 
               <img
                 src={roomImages[room.id] || room.image}
                 alt={room.name}
-                className="w-full h-48 object-cover"
+                className="h-40 w-full object-cover"
               />
 
-              <div className="flex flex-col gap-2 p-5 w-full text-[#3D4F62]">
+              <div className="flex w-full flex-1 flex-col gap-2 p-4 text-[#3D4F62]">
 
-                <h2 className="text-xl font-semibold text-[#3D4F62]">
+                <h2 className="min-h-14 text-xl font-semibold text-[#3D4F62]">
                   {room.name}
                 </h2>
 
@@ -241,7 +124,7 @@ const Home = () => {
                   ₹{room.price} / hour
                 </p>
 
-                <p className="text-sm text-[#3D4F62]">
+                <p className="min-h-10 text-sm text-[#3D4F62]">
                   {room.amenities?.join(', ')}
                 </p>
 
@@ -259,7 +142,7 @@ const Home = () => {
 
                   <button
                     onClick={() => handleBookRoom(room)}
-                    className="mt-2 bg-[#3D4F62] hover:bg-[#3D4F62] transition-colors rounded-lg text-[#F8FAFC] py-2"
+                    className="mt-auto bg-[#3D4F62] hover:bg-[#3D4F62] transition-colors rounded-lg text-[#F8FAFC] py-2"
                   >
                     Book Room
                   </button>
@@ -267,7 +150,7 @@ const Home = () => {
                 ) : (
 
                   <button
-                    className="mt-2 bg-[#F8FAFC] cursor-not-allowed rounded-lg text-[#3D4F62] py-2"
+                    className="mt-auto bg-[#F8FAFC] cursor-not-allowed rounded-lg text-[#3D4F62] py-2"
                     disabled
                   >
                     Book Room
@@ -283,7 +166,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="how-it-works" className="bg-[#F8FAFC] px-6 py-16 md:px-10">
+      <section id="how-it-works" className="scroll-mt-24 bg-[#F8FAFC] px-6 py-16 md:px-10">
         <div className="mx-auto max-w-7xl">
           <div className="mb-10 text-center">
             <p className="font-semibold uppercase tracking-widest text-[#3D4F62]">Easy as 1, 2, 3</p>
@@ -302,7 +185,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="services" className="bg-[#F8FAFC] px-6 py-16 md:px-10">
+      <section id="services" className="scroll-mt-24 bg-[#F8FAFC] px-6 py-16 md:px-10">
         <div className="mx-auto max-w-7xl">
           <div className="mb-10 text-center">
             <p className="font-semibold uppercase tracking-widest text-[#3D4F62]">Make it yours</p>
@@ -330,7 +213,7 @@ const Home = () => {
         <About />
       </section>
 
-      <section id="feedback" className="scroll-mt-4">
+      <section id="feedback" className="scroll-mt-24">
         <Feedback />
       </section>
 
